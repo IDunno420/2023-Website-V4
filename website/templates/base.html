@@ -17,7 +17,6 @@
     <title>{% block title %}{% endblock %}</title>
 
     <!-- CSS  -->
-
     <style>
 
       img[alt="logo"] {
@@ -36,24 +35,25 @@
 
       .navbar.navbar-expand-lg.navbar-dark {
         padding: 10px;
-        background-color: rgb(171, 171, 255);
+        background-color: rgba(6,148,168,255);
       }
 
       .nav-item.nav-link {
-      color: black !important;
+      color: rgba(149,213,232,255)!important;
       margin-top: 50px;
       margin-left: 10px;
       font-size:larger !important;
       font-family: sans-serif !important;
+      font: bolder !important;
       }
 
       .nav-item.nav-link:hover {
-      color: rgb(120, 120, 255) !important;
+      color: rgba(6,100,127,255)!important;
       }
       
     </style>
-
     <!-- End CSS -->
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -69,7 +69,7 @@
         <div class="collapse navbar-collapse" id="navbar">
           <div class="navbar-nav">
             <container>
-              <a href="/home"><img src="https://i.ibb.co/JHp90pL/logo.png" alt="logo" border="0"></a>
+              <a href="/home"><img src="https://i.ibb.co/N6yKXxB/Sancta-s-Schoolars-1.png" alt="logo" border="0"></a>
             </container>
             <a class="nav-item nav-link" href="/home">Home</a>
             {% if user.is_authenticated %}
