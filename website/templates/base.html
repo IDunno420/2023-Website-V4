@@ -23,11 +23,18 @@
       height: 150px;
       }
 
-      .h3 {
-        color: aliceblue !important;
-        font: bold !important;
-        font-family: sans-serif !important;
-        font-size: 1000px !important;
+      body {
+            animation: fadeInAnimation ease 1.75s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0.75;
+            }
+            100% {
+                opacity: 1;
+            }
       }
 
       .nav-item .nav-link {
@@ -44,6 +51,15 @@
       .navbar.navbar-expand-lg.navbar-dark {
         padding: 10px;
         background-color: rgba(6,148,168,255);
+      }
+
+      .container-help {
+        width: 40%;
+      }
+
+      .container-help2 {
+        width: 60%;
+        margin-right: 20%;
       }
 
       .nav-item.nav-link {
@@ -68,6 +84,24 @@
         text-align: center;
       }
 
+      .border-dark {
+        border-color: rgba(6,100,113,255)!important;
+        border-width: 1px;
+        border: dotted;
+      }
+
+      .column {
+      float: left;
+      width: 50%;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
       .alert.alert-danger.alter-dismissible.fade.show {
         background-color: rgba(6,100,113,255) !important;
         color: rgba(149,213,232,255);
@@ -78,6 +112,10 @@
       }
 
       .btn.btn-primary {
+        background-color: rgba(6,100,113,255);
+      }
+
+      .btn.btn-secondary {
         background-color: rgba(6,100,113,255);
       }
       
@@ -104,9 +142,11 @@
             <a class="nav-item nav-link" href="/home">Home</a>
             {% if user.is_authenticated %}
             <a class="nav-item nav-link" href="/logout">Logout</a>
+            <a class="nav-item nav-link" href="/help">Help</a>
             {% else %}
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
+            <a class="nav-item nav-link" href="/help">Help</a>
             {% endif %}
           </div>
         </div>
