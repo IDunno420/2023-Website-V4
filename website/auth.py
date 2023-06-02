@@ -63,6 +63,10 @@ def sign_up():
 def help():
     return render_template("help.html", user=current_user) # Takes the user to the home.html
 
+@auth.route('/files')
+def files():
+    return render_template("file-storage.html", user=current_user) 
+
 @auth.route("/logout")
 @login_required
 def logout():
