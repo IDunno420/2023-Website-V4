@@ -1,21 +1,29 @@
 {% extends "base.html" %} {% block title %}Your Files{% endblock %} {% block content%}
 
 <form method="POST">
-    <h3 align="center">Sign Up</h3>
-    <hr>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="file"
-        id="file"
-        name="file"
-        class="form-control"
-        placeholder="Upload "
-      />
-      <div align="center">
-        <button class="btn btn-primary" type="submit">Upload File</button>
+  <div class="row">
+      <h3 align="center">File Upload</h3>
+      <hr>
+        <div class="column">
+          <div class="form-group">
+            <label for="email">Submit File</label>
+            <input
+              type="file"
+              id="file"
+              name="file"
+              class="form-control"
+              placeholder="Upload "
+            />
+            <hr>
+            <div align="center">
+              <button class="btn btn-primary" type="submit">Upload File</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
-
+      <div class="column">
+        <h3 align="center">Files</h3>
+        <hr>
+      </div>
+    </form>
+  </div>
 {% endblock %}
