@@ -3,6 +3,7 @@ from . import db
 from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from .forms import RegistrationForm
 
 auth = Blueprint("auth", __name__)
 
@@ -27,37 +28,21 @@ def login():
 
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
-    if request.method == 'POST':
-        email = request.form.get("email")
-        username = request.form.get("username")
-        password1 = request.form.get("password1")
-        password2 = request.form.get("password2")
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    
+    form = RegistrationForm()
+    
+    if form.validate_on_submit():
+        hashed_password = generate_password_hash((form.password.data), method='sha256')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash ('Your account has been created')
+        return redirect(url_for('auth.login'))
+    
+    return render_template('signup.html', form = form, user=current_user)
 
-        email_exists = User.query.filter_by(email=email).first()
-        username_exists = User.query.filter_by(username=username).first()
-
-        if email_exists:
-            flash('Email is already in use.', category='error')
-        elif username_exists:
-            flash('Username is already in use.', category='error')
-        elif password1 != password2:
-            flash('Password don\'t match!', category='error')
-        elif len(username) < 2:
-            flash('Username is too short.', category='error')
-        elif len(password1) < 6:
-            flash('Password is too short.', category='error')
-        elif len(email) < 4:
-            flash("Email is invalid.", category='error')
-        else:
-            new_user = User(email=email, username=username, password=generate_password_hash(
-                password1, method='sha256'))
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user, remember=True)
-            flash('User created!')
-            return redirect(url_for('views.home'))
-
-    return render_template("signup.html", user=current_user)
 
 @auth.route('/help')
 def help():
@@ -72,3 +57,4 @@ def files():
 def logout():
     logout_user()
     return redirect(url_for("views.home"))
+

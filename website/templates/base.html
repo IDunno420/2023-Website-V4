@@ -23,6 +23,12 @@
       height: 150px;
       }
 
+      .article-img {
+        height:65px;
+        width:65px;
+        margin:16px;
+      }
+
       body {
             animation: fadeInAnimation ease 1.75s;
             animation-iteration-count: 1;
@@ -146,6 +152,7 @@
             </container>
             <a class="nav-item nav-link" href="/home">Home</a>
             {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="/account">Account</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>
             <a class="nav-item nav-link" href="/files">Your Files</a>
             <a class="nav-item nav-link" href="/help">Help</a>
