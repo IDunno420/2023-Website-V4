@@ -1,13 +1,13 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
-<h1 align="center">{% block header %}Posts{% endblock %}</h1>
-<hr>
-<div id="posts">
-  {% for post in posts %}
-  <div class="card border-dark">
+<h1 align="center">{% block header %}Posts{% endblock %}</h1> <!-- Centers a header for the page -->
+<hr> <!-- Horozontal line for spacing -->
+<div id="posts"> <!-- Sets a div ID -->
+  {% for post in posts %} <!-- For the amounts of posts in post -->
+  <div class="card border-dark"> <!-- Sets a card with a border section -->
     <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+ post.user.image_file)}}"
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
-      <div>
+    <div class="card-header d-flex justify-content-between align-items-center"> <!-- Shows the users chosen image -->
+      <a href="/posts/{{post.user.username}}">{{post.user.username}}</a> <!-- Allows users to go to another users posted media -->
+      <div> <!-- Starts another div -->
         <span id="likes-count-{{post.id}}">
         {{ post.likes|length }}</span> 
         {% if user.id in post.likes|map(attribute="author")|list %}
@@ -15,48 +15,48 @@
           class="fas fa-thumbs-up"
           id="like-button-{{post.id}}"
           onclick="like({{post.id}})"
-        ></i>
+        ></i> <!-- Defines the thumbs up function -->
         {% else %}
         <i
           class="far fa-thumbs-up"
           id="like-button-{{post.id}}"
           onclick="like({{post.id}})"
         ></i>
-        {% endif %} {% if user.id == post.author %}
-        <div class="btn-group">
+        {% endif %} {% if user.id == post.author %} <!-- If the user is the author -->
+        <div class="btn-group"> <!-- Gives a button -->
           <button
             type="button"
             class="btn btn-sm btn-primary dropdown-toggle"
             data-bs-toggle="dropdown"
-          ></button>
+          ></button> 
           <ul class="dropdown-menu">
             <li>
               <a href="/delete-post/{{post.id}}" class="dropdown-item"
                 >Delete</a
-              >
+              > <!-- This button allows users to delete their post -->
             </li>
           </ul>
         </div>
         {% endif %}
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body"> <!-- Creates a card body section -->
       <div class="card-text">{{post.text}}</div>
-      <br />
-      <div class="collapse" id="comments-{{post.id}}">
+      <br/>
+      <div class="collapse" id="comments-{{post.id}}"> <!-- Creates a section for comments -->
         <div class="card">
-          <div class="card-body" id="comments-expanded-{{post.id}}">
-            {% for comment in post.comments %}
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
+          <div class="card-body" id="comments-expanded-{{post.id}}"> 
+            {% for comment in post.comments %} <!-- For the amount of comments on a post -->
+            <div class="d-flex justify-content-between align-items-center"> 
+              <div> <!-- Displays the users comment along with their username -->
                 <a href="/posts/{{comment.user.username}}"
                   >{{comment.user.username}}</a
                 >: {{comment.text}}
               </div>
-              <div>
+              <div> <!-- Sends a date when the comment was posted -->
                 <small class="text-muted"> {{comment.date_created}}</small>
                 {% if user.id == comment.author or user.id == post.author %}
-                <div class="btn-group">
+                <div class="btn-group"> <!-- If the user is the author of the comment -->
                   <button
                     type="button"
                     class="btn btn-sm btn-primary dropdown-toggle"
@@ -68,7 +68,7 @@
                         href="/delete-comment/{{comment.id}}"
                         class="dropdown-item"
                         >Delete</a
-                      >
+                      > <!-- Allow them to delete the comment -->
                     </li>
                   </ul>
                 </div>
@@ -79,40 +79,40 @@
           </div>
         </div>
       </div>
-      <p class="card-text">
+      <p class="card-text"> <!-- Sets a minimum length for the comments -->
         {% if post.comments|length > 0 %}
         <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
           <small>View {{post.comments|length}} Comments</small>
         </a>
-        {% else %}
-        <small class="text-muted">No Comments</small>
+        {% else %} <!-- No comments on the post then display -->
+        <small class="text-muted">No Comments</small> 
         {% endif %}
       </p>
       <form
         class="input-group mb-3"
         method="POST"
         action="/create-comment/{{post.id}}"
-      >
+      > <!-- Form to be able to create and post a comment -->
         <input
           type="text"
           id="text"
           name="text"
           class="form-control"
           placeholder="Comment something!"
-        />
-        <button type="submit" class="btn btn-primary">Comment</button>
+        /> <!-- Defines a comment and adds a placeholder -->
+        <button type="submit" class="btn btn-primary">Comment</button> <!-- Button to submit the comment -->
       </form>
     </div>
-    <div class="card-footer text-muted">{{post.date_created}}</div>
+    <div class="card-footer text-muted">{{post.date_created}}</div> <!-- Shows the date the comment was created -->
   </div>
   <br/ > {% endfor %}
 </div>
 {% block footer %}
-<div align="center">
+<div align="center"> <!-- Centered button -->
   <a href="/create-post"
     ><button type="button" class="btn btn-primary btn-lg">
       Create a Post
     </button></a
-  >
+  > <!-- A button that sends the user to a page to create a post -->
 </div>
 {% endblock %} {% endblock %}
