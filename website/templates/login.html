@@ -1,27 +1,27 @@
 {% extends "base.html" %} {% block title %}Login{% endblock %} {% block content%}
-<form method="POST">
-  <h3 align="center">Login</h3>
-  <hr>
-  <div class="form-group">
-    <label for="email">Email Address</label>
+<form method="POST"> <!-- Defines the form to login -->
+  <h3 align="center">Login</h3> <!-- Header title -->
+  <hr> <!-- Horozontal Line for spacing -->
+  <div class="form-group"> <!-- Defines the information below into a form grouping -->
+    <label for="email">Email Address</label> <!-- Sets the label for the section -->
     <input
       type="text"
       id="email"
       name="email"
       class="form-control"
       placeholder="Enter Email"
-    />
-    <label for="password">Password</label>
+    /> <!-- Expected information  -->
+    <label for="password">Password</label> <!-- Sets the label for the section -->
     <input
       type="password"
       id="password"
       name="password"
       class="form-control"
       placeholder="Enter Password"
-    />
-    <br />
-    <div align="center">
-      <button class="btn btn-primary" type="submit">Login</button>
+    /> <!-- Expected information -->
+    <br /> <!-- Spacing -->
+    <div align="center"> <!-- Aligns the button to the center of the screen -->
+      <button class="btn btn-primary" type="submit">Login</button> <!-- Button to submit information -->
     </div>
   </div>
 </form>

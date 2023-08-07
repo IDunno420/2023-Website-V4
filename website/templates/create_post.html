@@ -1,17 +1,17 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
-<h1 align="center">Make a Post</h1>
+<h1 align="center">Make a Post</h1> <!-- Creates a heading for the page -->
 
-<form method="POST">
-  <textarea name="text" id="text" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-lg btn-primary">Post</button>
-  </div>
-</form>
-<br />
-<div align="center">
-  <a href="/home"
-    ><button type="button" class="btn btn-lg btn-secondary">Back</button></a
-  >
-</div>
+<form method="POST"> <!-- Uses a form with the post method to send text to the blod where it can be displayed -->
+  <textarea name="text" id="text" class="form-control"></textarea> <!-- Space where text can be entered -->
+  <br/> <!-- Horozontal Line Spacer -->
+  <div align="center"> <!-- Center the button to the middle of the page -->
+    <button type="submit" class="btn btn-lg btn-primary">Post</button> <!-- Submits the given text to the blog -->
+  </div> <!-- Ends the button -->
+</form> <!-- Ends the form -->
+<br /> <!-- Horozontal Line Spacer -->
+<div align="center"> <!-- Centers the button to the centre of the page -->
+  <a href="/home"> <!-- Sends the user to the home page if clicked -->
+    <tton type="button" class="btn btn-lg btn-secondary">Back</button> <!-- Defines button for CSS -->
+  </a> <!-- End the href link -->
+</div> <!-- Ends the centering -->
 {% endblock %}

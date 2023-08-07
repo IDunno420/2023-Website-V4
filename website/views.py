@@ -1,4 +1,5 @@
-import os
+# Import Section #
+import os 
 from pathlib import Path
 from PIL import Image
 import secrets
@@ -7,19 +8,19 @@ from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
 from .forms import RegistrationForm, UpdateAccountForm
 from . import db
+# End Imports #
 
-views = Blueprint("views", __name__)
+views = Blueprint("views", __name__) #Defines views for later use
+
+@views.route("/") # Sets the initial page to load
+@views.route("/home") # Home page is the blog
+@login_required # User must be logged in
+def home(): # Defines home() to be able to render home
+    posts = Post.query.all() # queries all available posts
+    return render_template("home.html", user=current_user, posts=posts) #
 
 
-@views.route("/")
-@views.route("/home")
-@login_required
-def home():
-    posts = Post.query.all()
-    return render_template("home.html", user=current_user, posts=posts)
-
-
-@views.route("/create-post", methods=['GET', 'POST'])
+@views.route("/create-post", methods=['GET', 'POST']) # Sets methods and html page to use
 @login_required
 def create_post():
     if request.method == "POST":

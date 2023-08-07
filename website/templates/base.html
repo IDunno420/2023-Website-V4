@@ -133,30 +133,34 @@
     </style>
     <!-- End CSS -->
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <button
+  </head> <!-- Closes the head -->
+  <body> <!-- Starts the body section -->
+    <nav class="navbar navbar-expand-lg navbar-dark"> <!-- Defines the nav-bar for CSS -->
+      <div class="container-fluid"> <!-- Creates a container for the nav-bar buttons -->
+        <button 
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-          <div class="navbar-nav">
-            <container>
-              <a href="/home"><img src="https://i.ibb.co/N6yKXxB/Sancta-s-Schoolars-1.png" alt="logo" border="0"></a>
-            </container>
-            <a class="nav-item nav-link" href="/home">Home</a>
+        > <!-- Defines the entire Nav-bar so it functions and can be toggled -->
+          <span class="navbar-toggler-icon"></span> <!-- Nav-bar toggler icon -->
+        </button> <!-- Closes the button section -->
+        <div class="collapse navbar-collapse" id="navbar"> <!-- Starts the nav-bar -->
+          <div class="navbar-nav"> <!-- Defines the nav-bar -->
+            <container> <!-- Defines a container section -->
+              <a href="/home"><img src="https://i.ibb.co/N6yKXxB/Sancta-s-Schoolars-1.png" alt="logo" border="0"></a> 
+              <!-- Defines a href to send the user to the home, with a online hosted image of the logo -->
+            </container> <!-- Closes the Container section -->
+            <!-- Nav-bar Definitions for buttons that send the user to certain pages -->
+            <a class="nav-item nav-link" href="/home">Home</a> 
             {% if user.is_authenticated %}
+            <!-- The four links below only appear if the user is logged in -->
             <a class="nav-item nav-link" href="/account">Account</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>
             <a class="nav-item nav-link" href="/files">Your Files</a>
             <a class="nav-item nav-link" href="/help">Help</a>
             {% else %}
+            <!-- If the user is not logged in they see the below 3 pages -->
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
             <a class="nav-item nav-link" href="/help">Help</a>
@@ -167,18 +171,24 @@
     </nav>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    'error' %} <!-- Defines flashed messages into an error catagory -->
+    <div class="alert alert-danger alter-dismissible fade show" role="alert"> 
+      <!-- Creates a dismissable flash message that occurs if an error has occured -->
+      {{ message }} <!-- Shows the given message -->
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
+      <!-- Defines a button that closes the section -->
     </div>
     {% else %}
     <div class="alert alert-success alter-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <!-- This is a section for if a given message is shown that is not an error -->
+      <!-- for example a message to tell the user they have logged in -->
+      {{ message }} <!-- Shows the defined message -->
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
+      <!-- Button to dismiss the section -->
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
     <div class="container">{% block content %}{% endblock %}</div>
+    <!-- The bellow are some scripts that are used within the code -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -188,5 +198,6 @@
       type="text/javascript"
       src="{{ url_for('static', filename='index.js')}}"
     ></script>
+    <!-- End scripts -->
   </body>
 </html>
