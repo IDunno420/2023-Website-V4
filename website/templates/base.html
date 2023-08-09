@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
-    />
+    >
     <script
       src="https://kit.fontawesome.com/999ca2bb93.js"
       crossorigin="anonymous"
@@ -148,7 +148,7 @@
         <div class="collapse navbar-collapse" id="navbar"> <!-- Starts the nav-bar -->
           <div class="navbar-nav"> <!-- Defines the nav-bar -->
             <container> <!-- Defines a container section -->
-              <a href="/home"><img src="https://i.ibb.co/N6yKXxB/Sancta-s-Schoolars-1.png" alt="logo" border="0"></a> 
+              <a href="/home"><img src="https://i.ibb.co/N6yKXxB/Sancta-s-Schoolars-1.png" alt="logo"></a> 
               <!-- Defines a href to send the user to the home, with a online hosted image of the logo -->
             </container> <!-- Closes the Container section -->
             <!-- Nav-bar Definitions for buttons that send the user to certain pages -->
@@ -157,13 +157,14 @@
             <!-- The four links below only appear if the user is logged in -->
             <a class="nav-item nav-link" href="/account">Account</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>
-            <a class="nav-item nav-link" href="/files">Your Files</a>
             <a class="nav-item nav-link" href="/help">Help</a>
+            <a class="nav-item nav-link" href="/about">About Us</a>
             {% else %}
             <!-- If the user is not logged in they see the below 3 pages -->
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
             <a class="nav-item nav-link" href="/help">Help</a>
+            <a class="nav-item nav-link" href="/about">About Us</a>
             {% endif %}
           </div>
         </div>
@@ -195,7 +196,6 @@
       crossorigin="anonymous"
     ></script>
     <script
-      type="text/javascript"
       src="{{ url_for('static', filename='index.js')}}"
     ></script>
     <!-- End scripts -->

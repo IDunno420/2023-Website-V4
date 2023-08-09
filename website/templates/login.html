@@ -1,6 +1,7 @@
+<!DOCTYPE html><html lang="en">
 {% extends "base.html" %} {% block title %}Login{% endblock %} {% block content%}
 <form method="POST"> <!-- Defines the form to login -->
-  <h3 align="center">Login</h3> <!-- Header title -->
+  <h3>Login</h3> <!-- Header title -->
   <hr> <!-- Horozontal Line for spacing -->
   <div class="form-group"> <!-- Defines the information below into a form grouping -->
     <label for="email">Email Address</label> <!-- Sets the label for the section -->
@@ -10,7 +11,7 @@
       name="email"
       class="form-control"
       placeholder="Enter Email"
-    /> <!-- Expected information  -->
+    > <!-- Expected information  -->
     <label for="password">Password</label> <!-- Sets the label for the section -->
     <input
       type="password"
@@ -18,11 +19,12 @@
       name="password"
       class="form-control"
       placeholder="Enter Password"
-    /> <!-- Expected information -->
-    <br /> <!-- Spacing -->
-    <div align="center"> <!-- Aligns the button to the center of the screen -->
+    > <!-- Expected information -->
+    <br> <!-- Spacing -->
+    <div> <!-- Aligns the button to the center of the screen -->
       <button class="btn btn-primary" type="submit">Login</button> <!-- Button to submit information -->
     </div>
   </div>
 </form>
 {% endblock %}
+</html>

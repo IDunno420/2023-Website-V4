@@ -1,10 +1,11 @@
+<!DOCTYPE html><html lang="en">
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
-<h1 align="center">{% block header %}Posts{% endblock %}</h1> <!-- Centers a header for the page -->
+<h1>{% block header %}Posts{% endblock %}</h1> <!-- Centers a header for the page -->
 <hr> <!-- Horozontal line for spacing -->
 <div id="posts"> <!-- Sets a div ID -->
   {% for post in posts %} <!-- For the amounts of posts in post -->
   <div class="card border-dark"> <!-- Sets a card with a border section -->
-    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+ post.user.image_file)}}"
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+ post.user.image_file)}}" alt="Your Profile Picture">
     <div class="card-header d-flex justify-content-between align-items-center"> <!-- Shows the users chosen image -->
       <a href="/posts/{{post.user.username}}">{{post.user.username}}</a> <!-- Allows users to go to another users posted media -->
       <div> <!-- Starts another div -->
@@ -17,11 +18,6 @@
           onclick="like({{post.id}})"
         ></i> <!-- Defines the thumbs up function -->
         {% else %}
-        <i
-          class="far fa-thumbs-up"
-          id="like-button-{{post.id}}"
-          onclick="like({{post.id}})"
-        ></i>
         {% endif %} {% if user.id == post.author %} <!-- If the user is the author -->
         <div class="btn-group"> <!-- Gives a button -->
           <button
@@ -42,7 +38,7 @@
     </div>
     <div class="card-body"> <!-- Creates a card body section -->
       <div class="card-text">{{post.text}}</div>
-      <br/>
+      <br>
       <div class="collapse" id="comments-{{post.id}}"> <!-- Creates a section for comments -->
         <div class="card">
           <div class="card-body" id="comments-expanded-{{post.id}}"> 
@@ -99,16 +95,16 @@
           name="text"
           class="form-control"
           placeholder="Comment something!"
-        /> <!-- Defines a comment and adds a placeholder -->
+        > <!-- Defines a comment and adds a placeholder -->
         <button type="submit" class="btn btn-primary">Comment</button> <!-- Button to submit the comment -->
       </form>
     </div>
     <div class="card-footer text-muted">{{post.date_created}}</div> <!-- Shows the date the comment was created -->
   </div>
-  <br/ > {% endfor %}
+  <br> {% endfor %}
 </div>
 {% block footer %}
-<div align="center"> <!-- Centered button -->
+<div> <!-- Centered button -->
   <a href="/create-post"
     ><button type="button" class="btn btn-primary btn-lg">
       Create a Post
@@ -116,3 +112,4 @@
   > <!-- A button that sends the user to a page to create a post -->
 </div>
 {% endblock %} {% endblock %}
+</html>

@@ -1,9 +1,11 @@
+<!DOCTYPE html><html lang="en">
 {% extends "posts_div.html" %} {% block title %}{{username}}'s Posts{% endblock%} 
 <!-- Sets the page to use the users username for the title and a header for the page -->
 {% block header %} {{username}}'s posts {% endblock %} {% block footer %}
-<div align="center"> <!-- Centers the back button -->
+<div> <!-- Centers the back button -->
   <a href="/home" 
     ><button type="button" class="btn btn-primary btn-lg">Back</button></a
   > <!-- Sends the user back to the blog if clicked -->
 </div>
 {% endblock %}
+</html>

@@ -1,14 +1,15 @@
-{% extends "base.html" %} {% block title %}Account{% endblock %}
-{% block content %}
+<!DOCTYPE html><html lang="en">
+    {% extends "base.html" %} {% block title %}Account{% endblock %}
+    {% block content %}
     <div class="content-section"> <!-- Defines a secton -->
       <div class="media"> <!-- Defines the below as media -->
-        <img class="rounded-circle article-img" src="{{ image_file }}"> <!-- Shows the users image -->
+        <img class="rounded-circle article-img" src="{{ image_file }}" alt="Our Logo"> <!-- Shows the users image -->
         <div class="media-body"> <!-- Displays the users username and email --> 
-          <h2 class="account-heading">{{ current_user.username }}</h2>
-          <p class="text-secondary">{{ current_user.email }}</p>
+          <h2 class="account-heading">{{ current_user.username }}</h2> <!-- Displays the current users' username -->
+          <p class="text-secondary">{{ current_user.email }}</p> <!-- Displays the current users' email -->
         </div>
       </div>
-        <form method="POST" action="" enctype="multipart/form-data"> <!-- Defines a form -->
+        <form method="POST" enctype="multipart/form-data"> <!-- Defines a form -->
             {{ form.hidden_tag() }} 
             <fieldset class="form-group"> <!-- Defines a group of information -->
                 <legend class="border-bottom mb-4">Account Info</legend> 
@@ -17,9 +18,9 @@
                     {% if form.username.errors %} <!-- Error Validaton for the username -->
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback"> <!-- If the user gives invalid feedback -->
-                            {% for error in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
+                            {% for error in form.username.errors %} <!-- If an error occurs -->
+                                <span>{{ error }}</span> <!-- Return Error Message -->
+                            {% endfor %} <!-- If valid finish validation -->
                         </div>
                     {% else %}
                         {{ form.username(class="form-control form-control-lg") }}
@@ -30,30 +31,30 @@
                     {% if form.email.errors %} <!-- Error Validation for the email -->
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback"> <!-- If the user gives invalid feedback -->
-                            {% for error in form.email.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
+                            {% for error in form.email.errors %} <!-- If an error occurs -->
+                                <span>{{ error }}</span> <!-- Return Error Message -->
+                            {% endfor %} <!-- If valid finish validation -->
                         </div>
                     {% else %}
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-            </br>
+            <br>
                 <div class="form-group"> <!-- Defines a form group -->
                     {{ form.picture.label() }} 
                     {{ form.picture(class="form-control-file") }}
                     {% if form.picture.errors %} <!-- Error validation for the user chosen image -->
-                        {% for error in form.picture.errors %}
-                            <span class="text-danger">{{ error }}</span></br>
-                        {% endfor %}
+                        {% for error in form.picture.errors %} <!-- If an error occurs -->
+                            <span class="text-danger">{{ error }}</span><br> <!-- Return Error Message -->
+                        {% endfor %} <!-- If valid finish validation -->
                     {% endif %}
                 </div>
             </fieldset>
-        </br>
+        <br> 
             <div class="form-group"> <!-- Group for the submit button -->
                 {{ form.submit(class="btn btn-outline-info") }} <!-- The button that submits the user chosen image -->
             </div>
         </form>
-    </br>
+    <br>
     </div>
 {% endblock content %}
