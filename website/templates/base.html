@@ -158,13 +158,13 @@
             <a class="nav-item nav-link" href="/account">Account</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>
             <a class="nav-item nav-link" href="/help">Help</a>
-            <a class="nav-item nav-link" href="/about">About Us</a>
+            <a class="nav-item nav-link" href="/about">About</a>
             {% else %}
             <!-- If the user is not logged in they see the below 3 pages -->
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
             <a class="nav-item nav-link" href="/help">Help</a>
-            <a class="nav-item nav-link" href="/about">About Us</a>
+            <a class="nav-item nav-link" href="/about">About</a>
             {% endif %}
           </div>
         </div>
@@ -196,6 +196,7 @@
       crossorigin="anonymous"
     ></script>
     <script
+      type="text/javascript"
       src="{{ url_for('static', filename='index.js')}}"
     ></script>
     <!-- End scripts -->

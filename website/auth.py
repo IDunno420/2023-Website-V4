@@ -67,10 +67,9 @@ def help():
     return render_template("help.html" , user = current_user) 
     # Takes the user to the help page
 
-@auth.route('/files') # Sets a route to send the user to the file page\
-@login_required # Requires the user to be logged in
+@auth.route('/about') # Sets a route to send the user to the about page\
 def files():
-    return render_template("file-storage.html" , user = current_user) 
+    return render_template("about.html" , user = current_user) 
     # Takes the user to the file page 
 
 @auth.route("/logout") # Sets a route to logout 

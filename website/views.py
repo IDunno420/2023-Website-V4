@@ -148,7 +148,7 @@ def like(post_id):
         db.session.add(like) # Adding a like
         db.session.commit() # Commits the addition to the database
 
-    return jsonify({"likes": len(post.likes),
+    return jsonify({"likes": len(post.likes), 
     "liked": current_user.id in map(lambda x: x.author, post.likes)}) 
     # Displays the amount of likes
 
