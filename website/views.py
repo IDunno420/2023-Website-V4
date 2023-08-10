@@ -23,13 +23,29 @@ def home(): # Defines home() to be able to render home
     posts = Post.query.all() # queries all available posts
     return render_template("home.html" , user = current_user, posts = posts)
 
+
+def not_blank(comment):
+    valid = False # Defines valid as being a false input
+    while not valid: # When not valid loop
+        text = comment.strip()  # Remove leading and trailing whitespace
+        if text != "": # Test if text to whitespace 
+            return text # Return text
+        else: # If valid input
+            break # Break loop
+
+
 @views.route("/create-post", methods = ['GET', 'POST']) 
 # Sets methods and html page to use
 
 @login_required # Login is required for the below to be allowed
 def create_post(): 
     if request.method == "POST": # Sets the request method to post
-        text = request.form.get('text') 
+
+        post = request.form.get('text') 
+        # Define post as request the form in terms of text
+        # that the user has inputed
+        text = not_blank(post) # Define text to use not
+        # blank in terms of post
         # Where the user enters in the post text
 
         if not text: # Comment must have text else send error
@@ -56,7 +72,7 @@ def delete_post(id):
 
     if not post: # If the post doesnt exist
         flash("Post does not exist.", category = 'error') # Sends an error
-    elif current_user.id != post.id: # If the user not the author of the post 
+    elif current_user.id != post.author and current_user.id != post.author: # If the user not the author of the post 
         flash('You do not have permission to delete this post.',
         category = 'error') 
         # Dont allow to delete
@@ -72,7 +88,9 @@ def delete_post(id):
 @views.route("/posts/<username>") # Sets the route for a users page of posts
 @login_required # Requires the user to be logged in
 def posts(username):
-    user = User.query.filter_by(username = username).first()
+
+    user = User.query.filter_by(username = username).first() 
+    # Define used as being the query of username = username
 
     if not user: # If the user is not present in the database
         flash('No user with that username exists.', category = 'error') 
@@ -89,7 +107,12 @@ def posts(username):
 # Sets the route for the creation of a comment under the posts ID
 @login_required # Requires the user to be logged in
 def create_comment(post_id):
-    text = request.form.get('text') # Defines text
+
+    comment = request.form.get('text') # Defines comment
+    # as the request to get the text the user has entered
+    text = not_blank(comment) # Define text as using the
+    # not blank in terms of the comment that the user
+    # is trying to post.
 
     if not text: # If the comment is empty
         flash('Comment cannot be empty.', category = 'error') 
