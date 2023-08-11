@@ -2,6 +2,8 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
 <h1>{% block header %}Posts{% endblock %}</h1> <!-- Centers a header for the page -->
 <hr> <!-- Horozontal line for spacing -->
+<!-- The below are all of the posts that have been created -->
+<!-- and defines certain parts of the code to allow for specific functions -->
 <div id="posts"> <!-- Sets a div ID -->
   {% for post in posts %} <!-- For the amounts of posts in post -->
   <div class="card border-dark"> <!-- Sets a card section -->
@@ -16,13 +18,14 @@
           class="fas fa-thumbs-up"
           id="like-button-{{post.id}}"
           onclick="like({{post.id}})"
-        ></i> <!-- Defines the thumbs up function -->
+        ></i> 
         {% else %}
         <i
           class="far fa-thumbs-up"
           id="like-button-{{post.id}}"
           onclick="like({{post.id}})"
-        ></i>
+        ></i> <!-- Defines the thumbs up function and allows users to like or remove their like -->
+        <!-- Also creates the icon for the like -->
         {% endif %} {% if user.id == post.author %} <!-- If the user is the author -->
         <div class="btn-group"> <!-- Gives a button -->
           <button
@@ -52,7 +55,8 @@
               <div> <!-- Displays the users comment along with their username -->
                 <a href="/posts/{{comment.user.username}}"
                   >{{comment.user.username}}</a
-                >: {{comment.text}}
+                >: {{comment.text}} <!-- Displays the username and allows users to-->
+                <!-- go to the page that has all of their posts in it -->
               </div>
               <div> <!-- Sends a date when the comment was posted -->
                 <small class="text-muted"> {{comment.date_created}}</small>
@@ -84,7 +88,7 @@
         {% if post.comments|length > 0 %}
         <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
           <small>View {{post.comments|length}} Comments</small>
-        </a>
+        </a> <!-- Button to click to view the posts comment section -->
         {% else %} <!-- No comments on the post then display -->
         <small class="text-muted">No Comments</small> 
         {% endif %}
@@ -100,7 +104,7 @@
           name="text"
           class="form-control"
           placeholder="Comment something!"
-        > <!-- Defines a comment and adds a placeholder -->
+        > <!-- Defines a comment and adds a placeholder for the comment -->
         <button type="submit" class="btn btn-primary">Comment</button> <!-- Button to submit the comment -->
       </form>
     </div>

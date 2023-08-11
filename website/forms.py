@@ -17,8 +17,9 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email' , validators = [DataRequired() , Email()]) 
     # Defines the email and validates
         # to require information and be a valid email address
-    password = PasswordField('Password' , validators = [DataRequired()]) 
-    # Defines the password and validates to require data
+    password = PasswordField('Password', validators = [DataRequired(),
+    Length(min = 8)])
+    # Defines the password and validates to require data and a minimum of 8 characters
     confirm_password = PasswordField('Confirm Password',
     validators = [DataRequired() , EqualTo('password')]) 
     # Defines confirm_password and validates
